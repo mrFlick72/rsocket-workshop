@@ -6,9 +6,8 @@ import reactor.core.publisher.Mono;
 
 /*
 TODO
-Implements a simple echo that once received a message republish the inbound message as response
-TIPS think to RSocket to messages to exchange and think how Spring manage typically a situation like this.
-For instance think how Spring manage websocket
+For this task you should implement an echo use case that resend to the sender the same sent message.
+Implements a simple echo that once received a message republish inbound message as response using the request reply interaction model
  */
 @Controller
 public class RequestReplyUseCase {
