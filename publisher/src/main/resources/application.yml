@@ -1,0 +1,2 @@
+# TODO 2) enable rsocket server
+#spring.rsocket.server.port: 7000
