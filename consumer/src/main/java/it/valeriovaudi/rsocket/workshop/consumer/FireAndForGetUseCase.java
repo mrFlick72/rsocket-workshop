@@ -2,13 +2,17 @@ package it.valeriovaudi.rsocket.workshop.consumer;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
+import org.springframework.http.MediaType;
+import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
+
+import java.awt.*;
 
 @Component
 public class FireAndForGetUseCase implements ApplicationRunner {
 
-    // TODO 4) enable RSocketRequester on client side
-    /*private final Mono<RSocketRequester> requester;
+    private final Mono<RSocketRequester> requester;
 
     public FireAndForGetUseCase(RSocketRequester.Builder builder) {
         int port = 7000;
@@ -17,12 +21,10 @@ public class FireAndForGetUseCase implements ApplicationRunner {
         this.requester = builder
                 .dataMimeType(MediaType.APPLICATION_JSON)
                 .connectTcp(host, port);
-    }*/
+    }
 
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        //TODO insert here your solution and pay attention to the log
-        // remember to start the publisher app before
     }
 }
