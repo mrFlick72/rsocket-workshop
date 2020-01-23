@@ -23,6 +23,7 @@ public class RequestReplyUseCase implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        //TODO inser here your solution
+        //TODO insert here your solution and pay attention to the log
+        // remember to start the publisher app before
     }
 }
