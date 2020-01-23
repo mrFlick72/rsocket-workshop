@@ -22,4 +22,15 @@ This is particularly useful for mobile⬄server communication when network conne
 
 The goal of workshop is provide a simple tutorial on how implements all the 4 programming RSocket paradigms.
 
+Tip think to RSocket interaction model in Spring to a messaging interaction model and how Spring manage typically a situation like this.
+For instance think how Spring manage websocket on STOMP
+
 Follow the TODO marks and have fun! 😎 
+
+## Exercise 1: Request Reply
+For this task you should implement an echo use case that resend to the sender the same sent message. 
+Implements a simple echo that once received a message republish inbound message as response using the request reply interaction model
+
+## Exercise 2: fire and forget
+For this task you should implement an fire message on consumer and a simple message logging on publisher, 
+pay attention of the nature of protocol that consumer and publisher role can be mixed according to the chosen interaction semantic. 
