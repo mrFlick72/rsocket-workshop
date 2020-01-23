@@ -1,4 +1,27 @@
 package it.valeriovaudi.rsocket.workshop.consumer;
 
-public class RequestReplyUseCase {
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class RequestReplyUseCase implements ApplicationRunner {
+
+    /*private final Mono<RSocketRequester> requester;
+
+    public RequestReplyUseCase(RSocketRequester.Builder builder) {
+        int port = 7000;
+        String host = "localhost";
+
+        this.requester = builder
+                .dataMimeType(MediaType.APPLICATION_JSON)
+                .connectTcp(host, port);
+    }*/
+
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        //TODO inser here your solution
+    }
 }
