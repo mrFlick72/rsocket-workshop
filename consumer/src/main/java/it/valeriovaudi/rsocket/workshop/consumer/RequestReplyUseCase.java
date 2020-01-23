@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RequestReplyUseCase implements ApplicationRunner {
 
+    // TODO 4) enable RSocketRequester on client side
     /*private final Mono<RSocketRequester> requester;
 
     public RequestReplyUseCase(RSocketRequester.Builder builder) {
