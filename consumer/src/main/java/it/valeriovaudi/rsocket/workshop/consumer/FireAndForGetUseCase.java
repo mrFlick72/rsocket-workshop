@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class FireAndForGetUseCase implements ApplicationRunner {
 
     // TODO 4) enable RSocketRequester on client side
-    /*private final Mono<RSocketRequester> requester;
+    /*private final RSocketRequester requester;
 
     public FireAndForGetUseCase(RSocketRequester.Builder builder) {
         int port = 7000;
@@ -16,7 +16,8 @@ public class FireAndForGetUseCase implements ApplicationRunner {
 
         this.requester = builder
                 .dataMimeType(MediaType.APPLICATION_JSON)
-                .connectTcp(host, port);
+                .connectTcp(host, port)
+                .block();
     }*/
 
 
