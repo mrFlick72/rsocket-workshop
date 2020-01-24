@@ -27,7 +27,10 @@ public class RequestStreamUseCase implements ApplicationRunner {
         requester.route("route.request.and.stream")
                 .data("Hey! hello man!")
                 .retrieveFlux(String.class)
-//                .take(10)
-                .subscribe(System.out::println);
+                .take(10)
+                .log()
+                .then()
+                .block();
+
     }
 }
