@@ -3,13 +3,15 @@ package it.valeriovaudi.rsocket.workshop.consumer;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 
+import org.springframework.http.MediaType;
+import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
 
 @Component
 public class RequestReplyUseCase implements ApplicationRunner {
 
-    // TODO 4) enable RSocketRequester on client side
-    /*private final Mono<RSocketRequester> requester;
+    private final Mono<RSocketRequester> requester;
 
     public RequestReplyUseCase(RSocketRequester.Builder builder) {
         int port = 7000;
@@ -18,7 +20,7 @@ public class RequestReplyUseCase implements ApplicationRunner {
         this.requester = builder
                 .dataMimeType(MediaType.APPLICATION_JSON)
                 .connectTcp(host, port);
-    }*/
+    }
 
 
     @Override

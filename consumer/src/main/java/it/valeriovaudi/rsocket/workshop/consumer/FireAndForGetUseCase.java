@@ -7,8 +7,6 @@ import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
-import java.awt.*;
-
 @Component
 public class FireAndForGetUseCase implements ApplicationRunner {
 
@@ -23,8 +21,11 @@ public class FireAndForGetUseCase implements ApplicationRunner {
                 .connectTcp(host, port);
     }
 
-
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        requester.flatMap(rSocketRequester -> rSocketRequester.route("route.request.and.forget")
+        .data("it is a message fired and the forgotten")
+        .send())
+        .subscribe();
     }
 }
