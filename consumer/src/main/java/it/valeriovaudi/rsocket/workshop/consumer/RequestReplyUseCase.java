@@ -5,6 +5,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.http.MediaType;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.stereotype.Component;
+import reactor.core.scheduler.Schedulers;
 
 @Component
 public class RequestReplyUseCase implements ApplicationRunner {
@@ -23,9 +24,9 @@ public class RequestReplyUseCase implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        requester.route("route.request.reply")
+        System.out.println(requester.route("route.request.reply")
                 .data("this is an echo message")
                 .retrieveMono(String.class)
-                .subscribe(System.out::println);
+                .block());
     }
 }
