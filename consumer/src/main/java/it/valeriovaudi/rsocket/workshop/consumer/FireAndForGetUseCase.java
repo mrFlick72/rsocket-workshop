@@ -3,6 +3,7 @@ package it.valeriovaudi.rsocket.workshop.consumer;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
@@ -25,7 +26,6 @@ public class FireAndForGetUseCase implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         requester.flatMap(rSocketRequester -> rSocketRequester.route("route.request.and.forget")
         .data("it is a message fired and the forgotten")
-        .send())
-        .subscribe();
+        .send()).subscribe(System.out::println);
     }
 }
