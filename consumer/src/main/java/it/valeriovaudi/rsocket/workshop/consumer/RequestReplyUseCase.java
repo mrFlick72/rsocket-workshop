@@ -5,12 +5,11 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.http.MediaType;
 import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.Mono;
 
 @Component
 public class RequestReplyUseCase implements ApplicationRunner {
 
-    private final Mono<RSocketRequester> requester;
+    private final RSocketRequester requester;
 
     public RequestReplyUseCase(RSocketRequester.Builder builder) {
         int port = 7000;
@@ -18,15 +17,15 @@ public class RequestReplyUseCase implements ApplicationRunner {
 
         this.requester = builder
                 .dataMimeType(MediaType.APPLICATION_JSON)
-                .connectTcp(host, port);
+                .connectTcp(host, port)
+                .block();
     }
-
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        requester.flatMap(rSocketRequester -> rSocketRequester.route("route.request.reply")
+        requester.route("route.request.reply")
                 .data("this is an echo message")
-                .retrieveMono(String.class))
+                .retrieveMono(String.class)
                 .subscribe(System.out::println);
     }
 }
