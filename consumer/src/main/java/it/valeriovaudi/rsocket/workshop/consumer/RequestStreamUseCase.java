@@ -1,4 +1,30 @@
 package it.valeriovaudi.rsocket.workshop.consumer;
 
-public class RequestStreamUseCase {
+
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
+
+@Component
+public class RequestStreamUseCase implements ApplicationRunner {
+
+    // TODO 4) enable RSocketRequester on client side
+  /*  private final RSocketRequester requester;
+
+    public RequestStreamUseCase(RSocketRequester.Builder builder) {
+        int port = 7000;
+        String host = "localhost";
+
+        this.requester = builder
+                .dataMimeType(MediaType.APPLICATION_JSON)
+                .connectTcp(host, port)
+                .block();
+    }*/
+
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        //TODO insert here your solution and pay attention to the log
+        // remember to start the publisher app before
+    }
 }
