@@ -2,14 +2,13 @@ package it.valeriovaudi.rsocket.workshop.consumer;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.http.MediaType;
-import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RequestStreamUseCase implements ApplicationRunner {
 
-    private final RSocketRequester requester;
+    // TODO 4) enable RSocketRequester on client side
+    /*private final RSocketRequester requester;
 
     public RequestStreamUseCase(RSocketRequester.Builder builder) {
         int port = 7000;
@@ -19,18 +18,11 @@ public class RequestStreamUseCase implements ApplicationRunner {
                 .dataMimeType(MediaType.APPLICATION_JSON)
                 .connectTcp(host, port)
                 .block();
-    }
-
+    }*/
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        requester.route("route.request.and.stream")
-                .data("Hey! hello man!")
-                .retrieveFlux(String.class)
-                .take(10)
-                .log()
-                .then()
-                .block();
-
+        //TODO insert here your solution and pay attention to the log
+        // remember to start the publisher app before
     }
 }
