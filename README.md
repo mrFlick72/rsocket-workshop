@@ -32,5 +32,8 @@ For this task you should implement an echo use case that resend to the sender th
 Implements a simple echo that once received a message republish inbound message as response using the request reply interaction model
 
 ## Exercise 2: fire and forget
-For this task you should implement an fire message on consumer and a simple message logging on publisher, 
-pay attention of the nature of protocol that consumer and publisher role can be mixed according to the chosen interaction semantic. 
+For this task you should fire a message on consumer and a simple message logging on publisher, 
+pay attention of the nature of protocol that consumer and publisher role can be mixed according to the chosen interaction semantic.
+ 
+## Exercise 3: request stream
+For this task you should implement an streaming use case in which on consumer side you fire an streaming request and on publisher side you should react to this request starting to push echo events.
