@@ -1,9 +1,9 @@
-package it.valeriovaudi.rsocket.workshop.publisher;
+package it.valeriovaudi.rsocket.workshop.publisher.task5;
 
 import org.springframework.stereotype.Controller;
 
 @Controller
-public class ChannelUseCase {
+public class RequestChannelExercise {
 
 /*    private final Mono<RSocketRequester> requester;
 
