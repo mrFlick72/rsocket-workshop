@@ -2,8 +2,8 @@
 It is a very basic workshop on rsocket with spring boot
 
 Taken from official RSocket documentation 
-```
 
+```
 RSocket is a popular and powerful application protocol providing Reactive Streams semantics.
 
 RSocket is a binary protocol for use on byte stream transports such as TCP, WebSockets, and Aeron.
@@ -17,7 +17,6 @@ It enables the following symmetric interaction models via async message passing 
 
 It supports session resumption, to allow resuming long-lived streams across different transport connections. 
 This is particularly useful for mobile⬄server communication when network connections drop, switch, and reconnect frequently.
-
 ```
 
 The goal of workshop is provide a simple tutorial on how implements all the 4 programming RSocket paradigms.
@@ -32,8 +31,7 @@ For this task you should implement an echo use case that resend to the sender th
 Implements a simple echo that once received a message republish inbound message as response using the request reply interaction model
 
 ## Exercise 2: fire and forget
-For this task you should fire a message on consumer and a simple message logging on publisher, 
-pay attention of the nature of protocol that consumer and publisher role can be mixed according to the chosen interaction semantic.
+For this task you should fire a message from client and a simple message logging on server
  
 ## Exercise 3: request stream
-For this task you should implement an streaming use case in which on consumer side you fire an streaming request and on publisher side you should react to this request starting to push echo events.
+For this task you should implement an streaming use case in which on consumer side you fire a streaming request and on publisher side you should react to this request starting to push echo events.
