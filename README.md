@@ -22,16 +22,26 @@ This is particularly useful for mobile⬄server communication when network conne
 The goal of workshop is provide a simple tutorial on how implements all the 4 programming RSocket paradigms.
 
 Tip think to RSocket interaction model in Spring to a messaging interaction model and how Spring manage typically a situation like this.
-For instance think how Spring manage websocket on STOMP
+For instance think how Spring manage websocket on STOMP. 
+
+Moreover follow spring messaging programming model on rsocket message reciver like below:
+
+```java
+
+
+``` 
 
 Follow the TODO marks and have fun! 😎 
 
-## Exercise 1: Request Reply
-For this task you should implement an echo use case that resend to the sender the same sent message. 
-Implements a simple echo that once received a message republish inbound message as response using the request reply interaction model
+## Exercise 1: play with Reactor
+For this task follow the test in order to play and get confidence with reactor in order to be more comfortable on the follow exercises. 
 
-## Exercise 2: fire and forget
-For this task you should fire a message from client and a simple message logging on server
+## Exercise 2: Request Reply
+For this task you should implement an echo use case that resend to the sender the same sent message. 
+
+## Exercise 3: fire and forget
+For this task you should fire a message from client to the server, that do a simple message log on the server
  
-## Exercise 3: request stream
-For this task you should implement an streaming use case in which on consumer side you fire a streaming request and on publisher side you should react to this request starting to push echo events.
+## Exercise 4: request stream
+For this task you should implement a streaming use case in which the client fire a streaming request on the server and  
+then the server start to publish as echo events the same message fired on stream request.
