@@ -24,10 +24,19 @@ The goal of workshop is provide a simple tutorial on how implements all the 4 pr
 Tip think to RSocket interaction model in Spring to a messaging interaction model and how Spring manage typically a situation like this.
 For instance think how Spring manage websocket on STOMP. 
 
-Moreover follow spring messaging programming model on rsocket message reciver like below:
+Moreover following spring messaging programming model on RSocket message receiver your receiver code should be like below:
 
 ```java
 
+@Controller
+public class YourEmitterClass {
+
+    @MessageMapping("route")
+    public Mono/Flux routeListener(Object payload) {
+        ....
+    }
+
+}
 
 ``` 
 
