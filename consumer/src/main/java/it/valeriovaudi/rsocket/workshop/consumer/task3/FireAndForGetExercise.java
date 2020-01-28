@@ -1,17 +1,18 @@
-package it.valeriovaudi.rsocket.workshop.consumer;
+package it.valeriovaudi.rsocket.workshop.consumer.task3;
 
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-
+import org.springframework.http.MediaType;
+import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.stereotype.Component;
 
+
 @Component
-public class RequestReplyUseCase implements ApplicationRunner {
+public class FireAndForGetExercise implements ApplicationRunner {
 
-    // TODO 4) enable RSocketRequester on client side
-    /*private final RSocketRequester requester;
+    private final RSocketRequester requester;
 
-    public RequestReplyUseCase(RSocketRequester.Builder builder) {
+    public FireAndForGetExercise(RSocketRequester.Builder builder) {
         int port = 7000;
         String host = "localhost";
 
@@ -19,7 +20,7 @@ public class RequestReplyUseCase implements ApplicationRunner {
                 .dataMimeType(MediaType.APPLICATION_JSON)
                 .connectTcp(host, port)
                 .block();
-    }*/
+    }
 
 
     @Override
