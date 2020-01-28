@@ -12,7 +12,7 @@ import reactor.test.StepVerifier;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(properties = "spring.rsocket.server.port=0")
-public class RequestReplyExercise {
+public class RequestReplyExerciseTest {
 
     @Autowired
     private RSocketRequester.Builder requesterBuilder;
@@ -36,6 +36,3 @@ public class RequestReplyExercise {
                 .verifyComplete();
     }
 }
-
-
-
