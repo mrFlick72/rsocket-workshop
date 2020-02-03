@@ -25,7 +25,9 @@ public class FireAndForGetExercise implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        //TODO insert here your solution and pay attention to the log
-        // remember to start the publisher app before
+        requester.route("route.request.and.forget")
+                .data("it is a message fired and the forgotten")
+                .send()
+                .subscribe(System.out::println);
     }
 }

@@ -24,8 +24,13 @@ public class RequestStreamExercise implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        //TODO insert here your solution and pay attention to the log
-        // remember to start the publisher app before
+        requester.route("route.request.and.stream")
+                .data("Hey! hello man!")
+                .retrieveFlux(String.class)
+                .take(10)
+                .log()
+                .then()
+                .block();
     }
 }
 

@@ -7,9 +7,12 @@ import org.springframework.messaging.rsocket.RSocketRequester;
 import org.springframework.stereotype.Component;
 import reactor.core.publisher.Mono;
 
+import java.util.Random;
+
 @Component
 public class RequestChannelExercise implements ApplicationRunner{
 
+    Random random = new Random();
     private final Mono<RSocketRequester> requester;
 
     public RequestChannelExercise(RSocketRequester.Builder builder) {
@@ -22,10 +25,22 @@ public class RequestChannelExercise implements ApplicationRunner{
                 .cache();
     }
 
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        //TODO insert here your solution and pay attention to the log
-        // remember to start the publisher app before
+        requester
+                .flatMap(req -> req.route("route.request.channel")
+                        .data("Hey! hello man!")
+                        .retrieveFlux(Object.class)
+                        .log()
+                        .flatMap(strings ->
+                                requester.flatMap(rSocketRequester ->
+                                        rSocketRequester.route("route.request.channel")
+                                                .data(random.nextInt(3) + 1)
+                                                .send())
+                        )
+                        .then())
+                .subscribe();
     }
 
 }
