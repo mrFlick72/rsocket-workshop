@@ -24,7 +24,9 @@ public class RequestReplyExercise implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        //TODO insert here your solution and pay attention to the log
-        // remember to start the publisher app before
+        System.out.println(requester.route("route.request.reply")
+                .data("this is an echo message")
+                .retrieveMono(String.class)
+                .block());
     }
 }
