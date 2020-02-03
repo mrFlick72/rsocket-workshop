@@ -15,8 +15,6 @@ public class ReactorExerciseTest {
         StepVerifier.create(anEagerMono)
                 .expectNext("an eager mono")
                 .verifyComplete();
-
-        anEagerMono.subscribe();
     }
 
     @Test
