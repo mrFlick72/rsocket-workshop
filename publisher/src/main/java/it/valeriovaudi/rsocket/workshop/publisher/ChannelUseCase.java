@@ -13,24 +13,33 @@ import java.util.stream.IntStream;
 @Controller
 public class ChannelUseCase {
 
-    private AtomicInteger requestRate = new AtomicInteger(1);
 
-    @MessageMapping("route.request.channel")
-    public void ackCollector(Integer size) {
-        System.out.println("size: " + size);
-        requestRate.set(size);
+    @MessageMapping("route.channel")
+    public Flux<String> streamEcho(Flux<Message> message) {
+        return message
+                .doOnNext(setting -> System.out.println("Requested interval is {} seconds. " + setting))
+                .doOnCancel(() -> System.out.println("The client cancelled the channel."))
+                .switchMap(msg -> Flux.interval(Duration.ofSeconds(msg.rate))
+                        .flatMap(tick -> createMessages(msg)));
+
     }
 
-
-    @MessageMapping("route.request.channel")
-    public Flux<List<String>> streamEcho(String message) {
-        return Flux.interval(Duration.ofSeconds(1))
-                .flatMap(tick -> createMessages(message));
+    public Flux<String> createMessages(Message baseMessage) {
+        return Flux.range(0, baseMessage.rate)
+                .map(value -> baseMessage.message);
     }
+}
 
-    public Flux<List<String>> createMessages(String baseMessage) {
-        return Flux.just(IntStream.range(0, requestRate.get())
-                .mapToObj(value -> baseMessage)
-                .collect(Collectors.toList()));
+
+class Message {
+    public String message;
+    public Integer rate;
+
+    @Override
+    public String toString() {
+        return "Message{" +
+                "message='" + message + '\'' +
+                ", rate=" + rate +
+                '}';
     }
 }
