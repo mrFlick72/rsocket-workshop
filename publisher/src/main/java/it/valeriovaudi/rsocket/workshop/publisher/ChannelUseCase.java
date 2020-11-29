@@ -15,7 +15,7 @@ public class ChannelUseCase {
 
 
     @MessageMapping("route.channel")
-    public Flux<String> streamEcho(Flux<Message> message) {
+    public Flux<List<String>> streamEcho(Flux<Message> message) {
         return message
                 .doOnNext(setting -> System.out.println("Requested interval is {} seconds. " + setting))
                 .doOnCancel(() -> System.out.println("The client cancelled the channel."))
@@ -24,9 +24,10 @@ public class ChannelUseCase {
 
     }
 
-    public Flux<String> createMessages(Message baseMessage) {
-        return Flux.range(0, baseMessage.rate)
-                .map(value -> baseMessage.message);
+    public Flux<List<String>> createMessages(Message baseMessage) {
+        return Flux.from(Flux.range(0, baseMessage.rate)
+                .map(value -> baseMessage.message)
+                .collectList());
     }
 }
 

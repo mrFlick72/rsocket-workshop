@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.List;
 import java.util.Random;
 
 @Controller
@@ -37,7 +38,7 @@ public class ChannelUseCase implements ApplicationRunner {
         requester
                 .subscribe(req -> req.route("route.channel")
                         .data(Flux.just(new Message("Hey! hello man!", 1)))
-                        .retrieveFlux(String.class).subscribe(System.out::println));
+                        .retrieveFlux(List.class).subscribe(System.out::println));
     }
 
 }
