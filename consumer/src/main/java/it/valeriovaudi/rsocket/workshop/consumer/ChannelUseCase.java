@@ -36,9 +36,19 @@ public class ChannelUseCase implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         requester
-                .subscribe(req -> req.route("route.channel")
-                        .data(Flux.just(new Message("Hey! hello man!", 1)))
-                        .retrieveFlux(List.class).subscribe(System.out::println));
+                .subscribe(req -> channelFor(req, rate())
+                        .flatMap(list -> channelFor(req, rate()))
+                        .subscribe(System.out::println));
+    }
+
+    private int rate() {
+        return random.nextInt(3) + 1;
+    }
+
+    private Flux<List> channelFor(RSocketRequester req, int i) {
+        return req.route("route.channel")
+                .data(Flux.just(new Message("Hey! hello man!", i)))
+                .retrieveFlux(List.class);
     }
 
 }
